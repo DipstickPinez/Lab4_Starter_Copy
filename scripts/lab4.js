@@ -8,8 +8,13 @@
 function sumValues(num1, num2, add) {
     if (add) {
         let result = 0;
+        trueNum1 = Number(num1);
+        trueNum2 = Number(num2);
+        if ((trueNum1 == NaN) || (trueNum2 == NaN)) {
+            return false;
+        }
 
-        result = num1 + num2;
+        result = trueNum1 + trueNum2;
 
         return result;
     }
@@ -32,7 +37,11 @@ function discountPrices(prices, discount) {
     }
     let discountedPrice = 0
     for (let i = 0; i < length; i++) {
-        discountedPrice = prices[i] * (1 - discount);
+        numPrices = Number(prices[i]);
+        if (numPrices == NaN) {
+            return false;
+        }
+        discountedPrice = numPrices * (1 - discount);
         discounted.push(discountedPrice);
     }
 
