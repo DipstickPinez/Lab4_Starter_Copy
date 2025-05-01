@@ -7,14 +7,19 @@
  */
 function sumValues(num1, num2, add) {
     if (add) {
-        const result = 0;
+        let result = 0;
+        trueNum1 = Number(num1);
+        trueNum2 = Number(num2);
+        if (isNaN(trueNum1) || isNaN(trueNum2)) {
+            return false;
+        }
 
-        result = num1 + num2;
+        result = trueNum1 + trueNum2;
 
         return result;
     }
     else {
-        return !add;
+        return false;
     }
 }
 
@@ -27,13 +32,25 @@ function sumValues(num1, num2, add) {
 function discountPrices(prices, discount) {
     const discounted = []
     const length = prices.length;
+    if (length == 0) {
+        return false;
+    }
     let discountedPrice = 0
-    for(let i = 0; i < length; i++) {
-        discountedPrice += prices[i] * (1 - discount);
+    for (let i = 0; i < length; i++) {
+        numPrices = Number(prices[i]);
+        numDiscount = Number(discount);
+        if (isNaN(numPrices) || isNaN(numDiscount)) {
+            return false;
+        }
+        discountedPrice = numPrices * (1 - numDiscount);
         discounted.push(discountedPrice);
     }
 
     return discounted;
 }
 
-module.exports = {sumValues, discountPrices};
+console.log(sumValues('not a number', 5, true));
+console.log(discountPrices([], 'hello'));
+console.log(discountPrices('i\'m not an array', 0.5));
+
+module.exports = { sumValues, discountPrices };
